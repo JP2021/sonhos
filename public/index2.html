@@ -117,42 +117,24 @@
             font-size: 14px;
             color: #666;
         }
-
-        .whatsapp-share {
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .whatsapp-share a {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            background-color: #25D366;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-        }
     </style>
 </head>
+
+        
+  
 <body>
+    
     <div class="container">
-        <center><img src="/vi.png?text=Interprete+Seus+Sonhos" alt="Imagem de cabeçalho" height="242" width="242"></center>
+<center><img src="/vi.png?text=Interprete+Seus+Sonhos" alt="Imagem de cabeçalho"  height="242" width="242"></center>
         <h1>Interpretador de Sonhos</h1>
         <textarea id="mensagem" placeholder="Descreva seu sonho aqui..."></textarea>
         <button id="interpretar">Interpretar Sonho</button>
         <div class="result" id="result">
             <!-- Interpretação e imagem aparecerão aqui -->
         </div>
-     <footer style="display: flex; flex-direction: column; align-items: center; font-size: 14px; color: #666; text-align: center;">
-    <span>&copy; 2025 Interpretador de Sonhos. Todos os direitos reservados</span>
-    <a href="/about" style="margin-top: 10px;">
-        <button style="padding: 5px 10px; font-size: 12px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            Sobre o Projeto
-        </button>
-    </a>
-</footer>
-
+        <footer>
+            &copy; 2025 Interpretador de Sonhos. Todos os direitos reservados.
+        </footer>
     </div>
 
     <script>
@@ -177,9 +159,6 @@
                         <p><strong>Interpretação:</strong> ${data.resposta}</p>
                         ${data.imagemUrl ? `<img src="${data.imagemUrl}" alt="Ilustração do sonho">` : ''}
                     `;
-
-                    // Adiciona botão de compartilhamento no WhatsApp
-                    adicionarBotaoCompartilhar(data.resposta, data.imagemUrl);
                 } else {
                     resultDiv.innerHTML = '<p>Desculpe, não foi possível processar sua solicitação.</p>';
                 }
@@ -188,23 +167,6 @@
                 resultDiv.innerHTML = '<p>Ocorreu um erro ao tentar processar seu sonho. Tente novamente mais tarde.</p>';
             }
         });
-
-        function adicionarBotaoCompartilhar(resposta, imagemUrl) {
-            const resultDiv = document.getElementById('result');
-            const compartilharDiv = document.createElement('div');
-            compartilharDiv.className = 'whatsapp-share';
-
-            const linkWhatsApp = document.createElement('a');
-            linkWhatsApp.href = `https://wa.me/?text=${encodeURIComponent(
-                `Interpretação do sonho:\n${resposta}\n` +
-                (imagemUrl ? `Veja a imagem aqui: ${imagemUrl}` : '')
-            )}`;
-            linkWhatsApp.target = '_blank';
-            linkWhatsApp.innerText = 'Compartilhar no WhatsApp';
-
-            compartilharDiv.appendChild(linkWhatsApp);
-            resultDiv.appendChild(compartilharDiv);
-        }
     </script>
 </body>
 </html>
